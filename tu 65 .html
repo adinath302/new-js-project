@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>method overriding on constructor</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        class employee {
+            constructor(name) {
+                console.log(`${name}- the Constructor is here`);
+                this.name = name
+            }
+            login() {
+                console.log("employee has logged in ");
+            }
+            loginout() {
+                console.log("employee has logged out ");
+            }
+            requestleaves(leaves) {
+                console.log(`employee has requested ${leaves} leaves - auto apruved `);
+            }
+        }
+        class programmer extends employee {
+            constructor(name) {
+                super(name)
+                console.log(` the programer is here,this is a newly writen constructor`);
+            }
+            // constructor(..argu){  //if there is no constructor in the child class this is created automaticaly
+            //     super(..argu)
+            // }
+            requestcoffee(x) {
+                console.log(`employee has request ${x} cofees`);
+            }
+            requestleaves(leaves) {
+                super.requestleaves(3)
+                console.log("we have been added plue one ");
+                // console.log(`employee has requested ${leaves+1} leaves [one extra]`);
+            }
+        }
+        let e = new programmer("anmol")
+        e.login()
+        e.requestleaves(3)
+    </script>
+</body>
+
+</html>
